@@ -39,6 +39,7 @@ const MORSE_TABLE = {
 
 function decode(expr) {
     // write your solution here
+    return expr.split('**********').map(decoderMatchTenSymbols=>decoderMatchTenSymbols.match(/.{10}/g).map(decoderMatchTwoSymbols => decoderMatchTwoSymbols.match(/.{2}/g).map(decodingVal=>{return +decodingVal===11?(()=>{return '-';})():+decodingVal===10?(()=>{return '.';})():(()=>{return '';})();}).join("")).map(morseEqual => MORSE_TABLE[morseEqual]).join("")).join(" ")
 }
 
 module.exports = {
